@@ -6,7 +6,7 @@ Automatic trash bin controller using HC-SR04 ultrasonic sensor and MG90S servo m
 
 - **Ultrasonic Distance Sensing**: HC-SR04 sensor measures distance (2cm - 400cm)
 - **Servo Control**: 2x MG90S servo motors for bin lid actuation
-- **Threshold Trigger**: Opens bin when object detected within 20cm
+- **Threshold Trigger**: Opens bin when object detected within 30cm
 - **Auto-Close**: Closes bin lid when object is removed
 - **LED Indicator**: Built-in LED (D2) indicates system ready state
 
@@ -185,7 +185,7 @@ Edit `src/bin/main.rs` to change the threshold distance:
 
 ```rust
 // Threshold distance in centimeters
-const THRESHOLD_CM: f32 = 20.0;  // Change this value
+const THRESHOLD_CM: f32 = 30.0;  // Change this value
 ```
 
 ### Pin Assignments
@@ -282,7 +282,7 @@ let distance = sensor.measure_distance_avg(3);
 
 ```rust
 // Create servo instance
-let mut servo = Servo::new(&ledc, pin, &timer);
+let mut servo = Servo::new(channel);
 
 // Set angle (0-180 degrees)
 servo.set_angle(90);
